@@ -38,18 +38,21 @@ public:
 
     // TODO 1a: Default constructor
     // Set name to "Unknown", id to 0, gpa to 0.0
-    Student() : name("Unknown") , id(0), gpa(0.0);
+    Student() : name("Unknown") , id(0), gpa(0.0){
+    }
         // YOUR CODE HERE
 
 
     // TODO 1b: Parameterized constructor
     // Initialize all three member variables from parameters
-    Student(string n, int i, double g) : name(n), id(i), gpa(g);
+    Student(string n, int i, double g) : name(n), id(i), gpa(g){
+    }
         // YOUR CODE HERE
 
     // TODO 1c: Copy constructor
     // Create a deep copy of another Student object
-    Student(const Student& other) : name(other.name), id(other.id), gpa(other.gpa);
+    Student(const Student& other) : name(other.name), id(other.id), gpa(other.gpa){
+    }
         // YOUR CODE HERE
 
     // TODO 1d: Destructor
@@ -81,7 +84,7 @@ public:
     // TODO 3a: Setter for name
     // Name must not be empty. If empty, keep current name.
     void setName(string n) {
-        if (!n.empty) {
+        if (!n.empty()) {
             name = n;
         }
     }
@@ -102,7 +105,7 @@ public:
     // Hint: loop through each character and use toupper()
     string getFormattedName() const {
         string upperName = "";
-        for (char c : name){      // cannot use with index 
+        for (char c : name){      // cannot use with index
             upperName += toupper(c);
         }
         return upperName;
@@ -122,11 +125,11 @@ public:
         return gpa < other.gpa;
     }
 
-    // TODO 5c: Stream insertion operator (<<)        // study this. I don't understand 
+    // TODO 5c: Stream insertion operator (<<)        // study this. I don't understand
     // Format: "Student(name, ID: id, GPA: gpa)"
     // Example: "Student(Ali, ID: 101, GPA: 3.5)"
     friend ostream& operator<<(ostream& os, const Student& s) {
-        os << "Student(" << name << ", ID: " << id << ", GPA: " << gpa << ")";
+        os << "Student(" << s.name << ", ID: " << s.id << ", GPA: " << s.gpa << ")";
         return os;
     }
 };
@@ -138,22 +141,20 @@ public:
 // TODO 6: Function Overloading - findBestStudent
 // Version 1: Takes two Student references, returns the one with higher GPA
 Student findBestStudent(const Student& a, const Student& b) {
-    if (a.getGpa >= b.getGpa){
-        return a
+    if (a.getGpa() >= b.getGpa()){
+        return a;
     }
-    else () {
     return b;
-    }
 }
 
 // Version 2: Takes an array of Students and its size, returns the one with highest GPA
 Student findBestStudent(Student arr[], int size) {
-    string best = "";
-    for(i = 0, i < size, i++){
-        if(arr[i].getGpa >= best.getGpa){
-            best = arr{i};
+    Student best = arr[0];
+    for(int i = 1; i < size; i++){
+      
+        if(arr[i].getGpa() > best.getGpa()){
+            best = arr[i];
         }
-    }
     }
     return best;
 }
